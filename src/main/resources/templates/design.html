@@ -11,35 +11,35 @@
     <img th:src="@{/images/ShavaCloud.png}">
     <form method="POST" th:object="${design}">
         <div class="grid">
-            <div class=""ingredient-group id="wraps">
+            <div class="ingredient-group" id="wraps">
                 <h3>Designate your wrap:</h3>
                 <div th:each="ingredient : ${wrap}">
                     <input name="ingredients" type="checkbox" th:value="${ingredient.id}"/>
                     <span th:text="${ingredient.name}">INGREDIENT</span>
                 </div>
             </div>
-            <div class=""ingredient-group id="proteins">
+            <div class="ingredient-group" id="proteins">
                 <h3>Pick your protein:</h3>
                 <div th:each="ingredient : ${protein}">
                     <input name="ingredients" type="checkbox" th:value="${ingredient.id}"/>
                     <span th:text="${ingredient.name}">INGREDIENT</span>
                 </div>
             </div>
-            <div class=""ingredient-group id="cheeses">
+            <div class="ingredient-group" id="cheeses">
                 <h3>Choose your cheese:</h3>
                 <div th:each="ingredient : ${cheese}">
                     <input name="ingredients" type="checkbox" th:value="${ingredient.id}"/>
                     <span th:text="${ingredient.name}">INGREDIENT</span>
                 </div>
             </div>
-            <div class=""ingredient-group id="veggies">
+            <div class="ingredient-group" id="veggies">
                 <h3>Determinate your veggies:</h3>
                 <div th:each="ingredient : ${veggies}">
                     <input name="ingredients" type="checkbox" th:value="${ingredient.id}"/>
                     <span th:text="${ingredient.name}">INGREDIENT</span>
                 </div>
             </div>
-            <div class=""ingredient-group id="sauce">
+            <div class="ingredient-group" id="sauce">
                 <h3>Select your sauce:</h3>
                 <div th:each="ingredient : ${sauce}">
                     <input name="ingredients" type="checkbox" th:value="${ingredient.id}"/>
@@ -51,7 +51,7 @@
             <h3>Name your shava creation:</h3>
             <input type="text" th:field="*{name}"/>
             <br>
-            <button>Submit your taco</button>
+            <button>Submit your shava</button>
         </div>
     </form>
 </body>
