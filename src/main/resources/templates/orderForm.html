@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Shava Cloud</title>
+    <link rel="stylesheet" th:href="@{/styles.css}" />
+</head>
+<body>
+    <form method="post" th:action="@{/orders}" th:object="${order}">
+        <h1>Оформи заказ на своё шаурмешное чудо!</h1>
+        <img class="main" th:src="@{/images/ShavaCloudV2.png}"/><br/>
+        <a th:href="@{/design}" id="another">Разработать другую шаву</a><br/>
+        <div th:if="${#fields.hasErrors()}">
+            <span class="validationError">
+                Пожалуйста, исправь ошибки и повтори отправку.
+            </span>
+        </div>
+        <h3>Доставить шаву в...</h3>
+        <label for="street">Улица и дом: </label>
+        <input type="text" th:field="*{street}"/>
+        <span class="validationError"
+              th:if="${#fields.hasErrors('street')}"
+              th:errors="*{street}">Street Error</span>
+        <br/>
+        <label for="city">Город: </label>
+        <input type="text" th:field="*{city}"/>
+        <span class="validationError"
+              th:if="${#fields.hasErrors('city')}"
+              th:errors="*{city}">city Error</span>
+        <br/>
+        <h3>Как будем оплачивать...</h3>
+        <label for="ccNumber">Номер карты: </label>
+        <input type="text" th:field="*{ccNumber}"/>
+        <span class="validationError"
+              th:if="${#fields.hasErrors('ccNumber')}"
+              th:errors="*{ccNumber}">ccNumber Error</span>
+        <br/>
+        <label for="ccExpiration">Действительна до: </label>
+        <input type="text" th:field="*{ccExpiration}"/>
+        <span class="validationError"
+              th:if="${#fields.hasErrors('ccExpiration')}"
+              th:errors="*{ccExpiration}">ccExpiration Error</span>
+        <br/>
+        <label for="ccCVV">CVV-код: </label>
+        <input type="text" th:field="*{ccCVV}"/>
+        <span class="validationError"
+              th:if="${#fields.hasErrors('ccCVV')}"
+              th:errors="*{ccCVV}">ccCVV Error</span>
+        <br/>
+        <input type="submit" value="Отправить заказ"/>
+    </form>
+</body>
+</html>

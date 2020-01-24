@@ -7,40 +7,43 @@
     <link rel="stylesheet" th:href="@{/styles.css}"/>
 </head>
 <body>
-    <h1>Design your Shava!</h1>
-    <img th:src="@{/images/ShavaCloud.png}">
-    <form method="POST" th:object="${design}">
+    <h1>Сделай свою шавуху!</h1>
+    <img class="main" th:src="@{/images/ShavaCloudV2.png}">
+    <form method="POST" th:object="${shava}">
+        <span class="validationError"
+              th:if="${#fields.hasErrors('ingredients')}"
+              th:errors="*{ingredients}">Ingredients Error</span>
         <div class="grid">
             <div class="ingredient-group" id="wraps">
-                <h3>Designate your wrap:</h3>
+                <h3>Выбери обёртку:</h3>
                 <div th:each="ingredient : ${wrap}">
                     <input name="ingredients" type="checkbox" th:value="${ingredient.id}"/>
                     <span th:text="${ingredient.name}">INGREDIENT</span>
                 </div>
             </div>
             <div class="ingredient-group" id="proteins">
-                <h3>Pick your protein:</h3>
+                <h3>Какое мяско добавить:</h3>
                 <div th:each="ingredient : ${protein}">
                     <input name="ingredients" type="checkbox" th:value="${ingredient.id}"/>
                     <span th:text="${ingredient.name}">INGREDIENT</span>
                 </div>
             </div>
             <div class="ingredient-group" id="cheeses">
-                <h3>Choose your cheese:</h3>
+                <h3>Сыр:</h3>
                 <div th:each="ingredient : ${cheese}">
                     <input name="ingredients" type="checkbox" th:value="${ingredient.id}"/>
                     <span th:text="${ingredient.name}">INGREDIENT</span>
                 </div>
             </div>
             <div class="ingredient-group" id="veggies">
-                <h3>Determinate your veggies:</h3>
+                <h3>Определись с овощами:</h3>
                 <div th:each="ingredient : ${veggies}">
                     <input name="ingredients" type="checkbox" th:value="${ingredient.id}"/>
                     <span th:text="${ingredient.name}">INGREDIENT</span>
                 </div>
             </div>
             <div class="ingredient-group" id="sauce">
-                <h3>Select your sauce:</h3>
+                <h3>Выбери соус:</h3>
                 <div th:each="ingredient : ${sauce}">
                     <input name="ingredients" type="checkbox" th:value="${ingredient.id}"/>
                     <span th:text="${ingredient.name}">INGREDIENT</span>
@@ -48,10 +51,13 @@
             </div>
         </div>
         <div>
-            <h3>Name your shava creation:</h3>
+            <h3>Дай имя своему шаурмешному созанию:</h3>
             <input type="text" th:field="*{name}"/>
+            <span class="validationError"
+                  th:if="${#fields.hasErrors('name')}"
+                  th:errors="*{name}">Name Error</span>
             <br>
-            <button>Submit your shava</button>
+            <button>Перейти к оформлению</button>
         </div>
     </form>
 </body>
