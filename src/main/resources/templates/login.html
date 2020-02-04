@@ -7,14 +7,20 @@
 <body>
     <h1>Авторизация</h1>
     <img th:src="@{/images/ShavaCloudV2.png}"/>
+
     <div th:if="${error}"> Не верный логин или пароль. </div>
+
     <p> Нет аккаунта? Нажми <a th:href="@{/register}">сюда</a> для регистрации. </p>
+
     <form method="post" th:action="@{/login}" id="loginForm">
         <label for="username">Логин: </label>
         <input type="text" name="username" id="username" /><br/>
+
         <label for="password">Пароль: </label>
         <input type="password" name="password" id="password" /><br/>
+
         <input type="submit" value="Войти"/>
     </form>
+
 </body>
 </html>

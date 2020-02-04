@@ -34,10 +34,13 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity httpSecurity) throws Exception {
         httpSecurity.authorizeRequests()
             .antMatchers("/design", "/orders")
-            .hasRole("ROLE_USER")
+            .hasRole("USER")
             .antMatchers("/", "/**").permitAll()
             .and()
             .formLogin()
-            .loginPage("/login");
+            .loginPage("/login")
+            .and()
+            .logout()
+            .logoutSuccessUrl("/");
     }
 }

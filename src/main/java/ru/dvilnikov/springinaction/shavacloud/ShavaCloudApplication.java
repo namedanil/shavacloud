@@ -4,7 +4,10 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import ru.dvilnikov.springinaction.shavacloud.data.IngredientRepository;
+import ru.dvilnikov.springinaction.shavacloud.data.UserRepository;
 
 @SpringBootApplication
 public class ShavaCloudApplication {
@@ -14,7 +17,7 @@ public class ShavaCloudApplication {
     }
     
     @Bean
-    public CommandLineRunner dataLoader(IngredientRepository ingredientRepository) {
+    public CommandLineRunner dataLoader(IngredientRepository ingredientRepository, UserRepository userRepository) {
         return new CommandLineRunner() {
             @Override
             public void run(String... args) throws Exception {
@@ -34,6 +37,9 @@ public class ShavaCloudApplication {
                 ingredientRepository.save(new Ingredient("SLSA", "Сальса", Ingredient.Type.SAUCE));
                 ingredientRepository.save(new Ingredient("SRCR", "Сырный", Ingredient.Type.SAUCE));
                 ingredientRepository.save(new Ingredient("GRLC", "Чесночный", Ingredient.Type.SAUCE));
+                userRepository.save(new User("admin", new BCryptPasswordEncoder().encode("admin"),
+                        "Админов Админушка Админович", "Админовская 1","Админоград",
+                        "+79888086488")); //TODO new BCryptPE() надо заменить на бин из SecurityConfig
             }
         };
     }

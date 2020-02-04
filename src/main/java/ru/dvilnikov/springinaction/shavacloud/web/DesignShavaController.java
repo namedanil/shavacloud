@@ -36,24 +36,6 @@ public class DesignShavaController {
 
     @ModelAttribute
     public void addIngredientsToModel(Model model) {
-        /*List<Ingredient> ingredients = Arrays.asList(
-                new Ingredient("FLTO", "Пшеничная Тортилья", Type.WRAP),
-                new Ingredient("COTO", "Кукурузная Тортилья", Type.WRAP),
-                new Ingredient("FLPT", "Пшеничный Лаваш", Type.WRAP),
-                new Ingredient("CHPT", "Сырный Лаваш", Type.WRAP),
-                new Ingredient("GRBF", "Говядина", Type.PROTEIN),
-                new Ingredient("PORK", "Свинина", Type.PROTEIN),
-                new Ingredient("CHCK", "Курятина", Type.PROTEIN),
-                new Ingredient("TMTO", "Помидорки", Type.VEGGIES),
-                new Ingredient("CBBG", "Капуста", Type.VEGGIES),
-                new Ingredient("ONIO", "Лук", Type.VEGGIES),
-                new Ingredient("PCKL", "Огурцы", Type.VEGGIES),
-                new Ingredient("CHED", "Чеддар", Type.CHEESE),
-                new Ingredient("JACK", "Монтери-Джек", Type.CHEESE),
-                new Ingredient("SLSA", "Сальса", Type.SAUCE),
-                new Ingredient("SRCR", "Сырный", Type.SAUCE),
-                new Ingredient("GRLC", "Чесночный", Type.SAUCE)
-        );*/
         List<Ingredient> ingredients = new ArrayList<>();
         ingredientRepository.findAll().forEach(ingredients::add);
         Type[] types = Type.values();

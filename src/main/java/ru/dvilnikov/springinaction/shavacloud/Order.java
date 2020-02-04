@@ -32,6 +32,9 @@ public class Order {
     @OneToMany(targetEntity = Shava.class)
     private List<Shava> shavaList = new ArrayList<>();
 
+    @ManyToOne
+    private User user;
+
     @PrePersist
     void placedAt() {
         this.placedAt = new Date();

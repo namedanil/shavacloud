@@ -7,15 +7,16 @@
     <link rel="stylesheet" th:href="@{/styles.css}" />
 </head>
 <body>
-    <form method="post" th:action="@{/orders}" th:object="${order}">
+    <form method="POST" th:action="@{/logout}">
+        <input type="submit" value="Logout"/>
+    </form>
+    <form method="POST" th:action="@{/orders}" th:object="${order}">
         <h1>Оформи заказ на своё шаурмешное чудо!</h1>
         <img class="main" th:src="@{/images/ShavaCloudV2.png}"/><br/>
         <a th:href="@{/design}" id="another">Разработать другую шаву</a><br/>
-        <div th:if="${#fields.hasErrors()}">
-            <span class="validationError">
-                Пожалуйста, исправь ошибки и повтори отправку.
-            </span>
-        </div>
+        <span class="validationError" th:if="${#fields.hasErrors()}">
+            Пожалуйста, исправь ошибки и повтори отправку.
+        </span>
         <h3>Доставить шаву в...</h3>
         <label for="street">Улица и дом: </label>
         <input type="text" th:field="*{street}"/>
